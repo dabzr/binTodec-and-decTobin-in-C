@@ -28,7 +28,7 @@ char * decimalToBinary(int dec){
         strcat(bin, tempchar);
         dec = dec / 2;
     }
-    char *tmp = malloc(strlen(bin));
+    char *tmp = malloc(sizeof(char) * strlen(bin));
     for (int i = 0; i <= strlen(bin); i++){
     tmp[i] = bin[strlen(bin)-i-1];
   }
