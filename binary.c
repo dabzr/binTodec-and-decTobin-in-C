@@ -16,7 +16,7 @@ int binaryToDecimal(char *bin){
 
 char * decimalToBinary(int dec){
     int i = 0;
-    char *bin = malloc(sizeof(dec));
+    char *bin = malloc(sizeof(double));
     char one[2] = "1";
     char tempchar[50];
     while (i==0){
@@ -28,15 +28,15 @@ char * decimalToBinary(int dec){
         strcat(bin, tempchar);
         dec = dec / 2;
     }
-    size_t size = strlen(bin);
-    for(int i = 0; i < size / 2; i++) {
-       char tmp = bin[i];
-       bin[i] = bin[size - i - 1];
-       bin[size - i - 1] = tmp;
-    }
+    char *tmp = malloc(strlen(bin));
+    for (int i = 0; i <= strlen(bin); i++){
+    tmp[i] = bin[strlen(bin)-i-1];
+  }
+    strcpy(bin, tmp);
+    free(tmp);
     return bin;
 }
 int main (){
     printf("%d\n", binaryToDecimal("100000"));
-    printf("%s\n", decimalToBinary(14));
+    printf("%s\n", decimalToBinary(4));
 }
