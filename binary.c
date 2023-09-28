@@ -3,18 +3,17 @@
 #include <string.h>
 
 int binaryToDecimal(char *bin){
-    int i, j, dec =0;
-    char num[2] = "1";
-    for (i=strlen(bin);i>=0;i--){
-        if (bin[i] == num[0])
-            dec = dec + (1 << (j-1));
-        j++;
-    }
-    return dec;
+  int j, dec =0;
+  for (int i=strlen(bin);i>=0;i--){
+    if (bin[i] == '1')
+      dec = dec + (1 << (j-1));
+    j++;
+  }
+  return dec;
 }
 
 char * decimalToBinary(int dec){
-    char *bin = malloc(sizeof(double));
+    char *bin = malloc(sizeof(dec) * 8);
     char tempchar[2];
     while (1){
         if (dec == 1){
@@ -23,9 +22,9 @@ char * decimalToBinary(int dec){
         }
         sprintf(tempchar, "%d", dec%2);
         strcat(bin, tempchar);
-        dec /= 2;
+        dec >>= 1;
     }
-    char *tmp = malloc(sizeof(char) * strlen(bin));
+    char *tmp = malloc(strlen(bin));
     for (int i = 0; i <= strlen(bin); i++)
       tmp[i] = bin[strlen(bin)-i-1];
     strcpy(bin, tmp);
