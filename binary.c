@@ -2,20 +2,19 @@
 #include <stdlib.h>
 #include <string.h>
 
-int binaryToDecimal(char *bin){
-  int j, dec =0;
-  for (int i=strlen(bin), j = 0;i>=0;i--, j++){
-    if (bin[i] == '1')
-      dec = dec + (1 << (j-1));
-  }
+int binaryToDecimal(char *bin) {
+  int j, dec = 0;
+  for (int i=strlen(bin), j = 0;i>=0;i--, j++)
+    if (bin[i] == '1') dec += (1 << (j-1));
+
   return dec;
 }
 
-char * decimalToBinary(int dec){
+char * decimalToBinary(int dec) {
     char *bin = malloc(sizeof(dec) * 8);
     char tempchar[2];
-    while (1){
-        if (dec == 1){
+    while (1) {
+        if (dec == 1) {
             strcat(bin, "1");
             break;
         }
