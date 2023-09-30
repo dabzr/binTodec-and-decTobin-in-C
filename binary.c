@@ -4,10 +4,9 @@
 
 int binaryToDecimal(char *bin){
   int j, dec =0;
-  for (int i=strlen(bin);i>=0;i--){
+  for (int i=strlen(bin), j = 0;i>=0;i--, j++){
     if (bin[i] == '1')
       dec = dec + (1 << (j-1));
-    j++;
   }
   return dec;
 }
