@@ -11,7 +11,7 @@ int binaryToDecimal(char *bin) {
 }
 
 char * decimalToBinary(int dec) {
-    char *bin = malloc(sizeof(dec) * 8);
+    char *bin = malloc(sizeof(int)*8);
     char tempchar[2];
     while (1) {
         if (dec == 1) {
@@ -23,7 +23,7 @@ char * decimalToBinary(int dec) {
         dec >>= 1;
     }
     char *tmp = malloc(strlen(bin));
-    for (int i = 0; i <= strlen(bin); i++)
+    for (int i = 0; i < strlen(bin); i++)
       tmp[i] = bin[strlen(bin)-i-1];
     strcpy(bin, tmp);
     free(tmp);
